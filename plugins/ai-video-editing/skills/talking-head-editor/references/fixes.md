@@ -25,3 +25,33 @@ Reduce motion: fewer elements per scene, slower and simpler entrances, no backgr
 
 ## 8. The render fails or doesn't match the preview
 Run `npx hyperframes doctor` and `npx hyperframes check`, read the output, and explain the cause in one sentence before fixing it. If HyperFrames' Chrome is missing, run `npx hyperframes browser ensure`. Render a 5-second draft of the problem section first, then the full video.
+
+## 9. The transcript repeats the same sentence over and over
+Whisper has fallen into a repetition loop. Split the audio at real silences (from the RMS envelope) into chunks of 15 to 20 seconds, transcribe each chunk on its own, and stitch the words together with each chunk's start offset. Show the stitched text before the gate.
+
+## 10. The transcript has a word nobody said, or the first words are timed wrong
+Whisper invents short words in breaths and lip noise ("Ja.", "Yeah.") and can be off by up to a second at the start. Check the level at that spot: real speech sits 20 to 30 dB above the floor, a breath only slightly above it. Remove the phantom word, and take every cut point from the waveform, never from word times.
+
+## 11. A word appears doubled in one pass and single in another
+That is recognition noise unless it sits on a cut. If it's far from any cut, the audio there is untouched: ask the person what they said and use their answer for the captions.
+
+## 12. White text is hard to read at the start
+The hero headline runs over the faded edge of the footage, where a bright wall shows through. Narrow the headline column so it ends before the fade starts, or move the footage further right. Reflow the headline into shorter lines. Re-run `npx hyperframes check` until the contrast finding is gone.
+
+## 13. The cursor sits far to the right while text is being typed
+The hidden characters still take up space. Hide them with `display: none` and reveal them with `display: inline`, not with opacity.
+
+## 14. Something appears in the first frame that belongs to the end
+A `fromTo` draws its from-values at frame 0. Add `immediateRender: false` to that tween (typically a click ripple, a glow or a highlight ring), re-render and look at frame 0.
+
+## 15. A panel stands there half empty
+The first item lands too long after the panel appears. Open the panel with a short headline that lands on the phrase being spoken, and let it make room when the build starts. Check every panel entry in the contact sheet.
+
+## 16. There's a gap at the edge of the face card
+The footage doesn't cover the clipping box. For each layout check `ty ≤ 0` and `ty + h·s ≥ box height` (and the same for x). Increase the scale or move the offset until it holds, at rest and mid-morph.
+
+## 17. "npx canceled due to missing packages"
+npx tried to fetch a newer HyperFrames release than the one that is cached. Use the project's pinned version (`npx hyperframes@<version> …` or the scripts in `package.json`) and allow the install once.
+
+## 18. The person sends a corrected file
+Compare the audio streams with `ffmpeg -i <file> -map 0:a -f md5 -`. If the audio is identical, keep the transcript and the cut and only swap the picture (then measure the face again). If it differs, start again at Step 2.
