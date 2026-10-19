@@ -1,0 +1,14 @@
+{
+  "name": "future-of-marketing",
+  "description": "Agent skills for marketers by Prof. Dr. Andreas Fuchs (Future of Marketing).",
+  "owner": {
+    "name": "Prof. Dr. Andreas Fuchs"
+  },
+  "plugins": [
+    {
+      "name": "ai-video-editing",
+      "source": "./plugins/ai-video-editing",
+      "description": "Turn one talking-head take into a polished video and Reel with motion graphics, captions and music."
+    }
+  ]
+}
