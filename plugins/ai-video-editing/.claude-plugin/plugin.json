@@ -1,7 +1,7 @@
 {
   "name": "ai-video-editing",
   "description": "Turn one talking-head take into a polished video and Reel with motion graphics, captions and music, using ffmpeg, Whisper and HyperFrames.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Prof. Dr. Andreas Fuchs"
   },
