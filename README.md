@@ -14,7 +14,7 @@ By [Prof. Dr. Andreas Fuchs](https://www.futureofmarketing.de), Professor of Mar
 
 | Plugin | Skill | What it does |
 |---|---|---|
-| `ai-video-editing` | `talking-head-editor` | Turns one talking-head take into a polished 16:9 video and a 9:16 Reel with motion graphics, word-synced captions, your brand and music. |
+| `ai-video-editing` | `talking-head-editor` | Turns one talking-head take into a polished 16:9 video and a 9:16 Reel with motion graphics, word-synced captions, your brand and music, and re-builds it in a second language from a new take. |
 | `ai-video-editing` | `brand-setup` | Captures your visual brand once as `brand.md` plus a brand board, so every video looks like you. |
 | `ai-video-editing` | `reel-format` | Turns a horizontal video into a clean 1080x1920 Reel, TikTok or Short, inside the safe zone, with an upload check. |
 
@@ -47,11 +47,11 @@ Download the folder `plugins/ai-video-editing/skills/talking-head-editor`, zip i
 
 ## talking-head-editor
 
-Record yourself once. Your agent does the rest: transcript, clean cut, brand board, storyboard, real motion graphics for every sentence (kinetic headlines, typed interface mockups, check-off grids, drawing diagrams), face layouts that morph, captions, music, a 16:9 video and a vertical Reel.
+Record yourself once. Your agent does the rest: transcript, clean cut, brand board, storyboard, real motion graphics for every sentence (kinetic headlines, typed interface mockups, check-off grids, system maps, struck-through "no longer needed" lists, a call-to-action click), face layouts that morph, captions, music, a 16:9 video and a vertical Reel. Record the same talk in another language and it re-times every scene to the new take.
 
-**How it works:** every step ends with proof (a transcript, a cut check, a contact sheet, a loudness report), and you approve at three gates: transcript, rough cut and storyboard. A 15-point final check runs before you see any final file.
+**How it works:** every step ends with proof (a transcript, a cut check, a 10-second sample, a contact sheet, a loudness report), and you approve at three gates: transcript, rough cut and storyboard. A 20-point final check runs before you see any final file.
 
-**What you need:** an AI plan that includes Claude Code (or Codex), ffmpeg, Node.js 22 or newer and Python 3. The skill checks your setup first and proposes install commands. Everything else is free and open source. You don't need any paid video tool.
+**What you need:** an AI plan that includes Claude Code (or Codex), ffmpeg, Node.js 22 or newer, Python 3 and a local speech-to-text engine (whisper.cpp, which HyperFrames uses, or faster-whisper). The skill checks your setup first and proposes install commands. Everything else is free and open source. You don't need any paid video tool.
 
 **Start with:**
 
@@ -59,16 +59,20 @@ Record yourself once. Your agent does the rest: transcript, clean cut, brand boa
 
 **Inside the skill:**
 
-- `SKILL.md`: the full workflow, Steps 0 to 10
-- `references/motion-library.md`: the target look and ten motion patterns, from kinetic headlines to system maps
+- `SKILL.md`: the full workflow, Steps 0 to 11 (Step 11: another language)
+- `references/motion-library.md`: the target look and fourteen motion patterns, from kinetic headlines to system maps and meta moments
 - `references/studio-rules.md`: copy into your `CLAUDE.md` or `AGENTS.md` and make it yours
 - `references/recording-guide.md`: how to record one take that's easy to edit
-- `references/final-check.md`: the 15-point gate
-- `references/fixes.md`: what to say when something goes wrong
+- `references/final-check.md`: the 20-point gate
+- `references/fixes.md`: eighteen common problems and their fixes
 
 The full playbook behind this skill, with examples, is on [futureofmarketing.de](https://www.futureofmarketing.de).
 
 ---
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Built on
 
