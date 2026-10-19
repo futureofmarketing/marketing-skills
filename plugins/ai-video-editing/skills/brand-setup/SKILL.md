@@ -24,6 +24,8 @@ Keep it conversational and fast. Ask in two short blocks, show a draft, show the
 - Logo files, and any screenshots or product images that should appear. Ask the person to drop them into `edit/brand/`.
 - Two to five examples of a look they like (their own slides, stills from videos they admire), saved to `edit/brand/references/`, each with a line on what they like.
 - What must never appear?
+- For the name pill: name and URL only, or with a small round portrait? (Many prefer without.)
+- Motion: calm and premium, or fast and punchy? (This sets the entrance speed and whether small UI elements may spring.)
 
 Where the person has no preference, offer the **Deep Blue Glass** preset below and say so. Where an answer is missing and there's no sensible preset, write `OPEN` in the brand file and list it at the end. Don't invent brand facts.
 
@@ -33,6 +35,9 @@ Where the person has no preference, offer the **Deep Blue Glass** preset below a
 - **References:** describe for each one the background, text colours, how the accent is used, typography, density and where the person's face sits. If the references point in different directions, ask which one leads.
 - **Contrast:** test every text colour against the backgrounds it will sit on (4.5:1 for small text, 3:1 for large). When a colour fails, suggest the nearest tint that passes and record both values: the original for shapes and accents, the tint for text.
 - **Typed values first:** hex codes the person typed win over values read from images.
+- **One look.** If the references point to several different looks, ask which one leads, or which look belongs to which kind of video. Never mix two looks in one video.
+- **Translate the person's own assets.** Their existing name pill, slide template or logo lock-up may use colours that aren't in the chosen palette (for example an orange ring). Rebuild those elements in the brand palette and say so; only real logos, screenshots and event images keep their own colours.
+- **Fonts for rendering:** store every font locally as woff2 and declare it with `@font-face`. A font the renderer has to fetch or guess makes frames differ between preview and render.
 
 ## Write edit/brand/brand.md
 
@@ -59,16 +64,19 @@ Each logo, screenshot and image: file, where it's used, clip shape if needed
 Header pill text · Chapter chip format (for example "01 · TOPIC") · Panel style · Background treatment
 
 ## Motion
-Entrance, exit and transition style · Pace · What may move while idle
+Entrance duration and ease (for example 0.5 to 0.8 s, expo or power4 out) · Exit duration (shorter than the entrance) · Blur amount for blur-in (for example 10 px, 8 px for small items) · Soft springs for UI elements: yes or no · Transition between scenes · What may move while idle · Never linear easing
 
 ## Never
-Banned effects and looks
+Banned effects and looks · Numbers without a spoken or written source
+
+## Approved exceptions
+Each deliberate break of the rules above, with where and why (for example: real logos keep their colours; a recreated app window in the product's original colours; captions turn the event's pink for four seconds where the speech says so)
 
 ## Open
 Everything still marked OPEN
 ```
 
-Aim for about 300 to 450 words. Show the draft before saving.
+Aim for about 350 to 500 words. Show the draft before saving.
 
 ## Build the brand board
 
@@ -84,7 +92,8 @@ Append this to `CLAUDE.md` (Claude Code) or `AGENTS.md` (Codex) in the project r
 ## Brand
 - edit/brand/brand.md is the only source for colours, fonts, chrome and motion. Read it before any visual work.
 - Use the text tints from brand.md for all text; use the original emphasis colour only for shapes.
-- Bold ideas are welcome; new colours, fonts or effects are not.
+- Bold ideas are welcome; new colours, fonts or effects are not, unless they are listed under "Approved exceptions".
+- The brand sets the look, not the ambition. When I say go all out, go all out within it.
 - When brand.md is silent on something, ask.
 - Compare every frame with brand.md before showing it.
 ```
@@ -101,8 +110,9 @@ A calm, premium look for experts explaining technology. Offer it when the person
 - Panels: translucent "glass" cards, lighter at the top, 1 px light border, large radius, a small monospace kicker in caps
 - Text: near-white headlines, pale blue secondary text, one bright blue accent; a pink or magenta emphasis colour for single key words (checked for contrast)
 - Chrome: name and URL on a dark pill top left; a chapter chip top right with a typed label, blinking cursor and accent dot
-- Type: a heavy grotesque for headlines (uppercase in hero scenes), a monospace for labels
-- Motion: blur-in entrances, blur dissolves, no bounce
+- Type: a heavy grotesque for headlines (uppercase in hero scenes, tight tracking), a monospace in caps with wide tracking for labels
+- Motion: blur-in entrances of 0.6 to 0.8 s with a soft expo or power4 settle, quicker exits, never linear, no bounce; done items get a tick ring that draws
+- Example values that work: background #03132D with a #1F3E9B glow, glass panels from #3376BA to #114D93 at about 45 % opacity, headlines #F9FDFE, secondary text #A2DAFC, labels and cursor #6EC0FA, one hard accent #3967F1 for buttons, ticks #88E8E4
 
 Next: the `talking-head-editor` skill. Until the board is approved, no video may be called on-brand.
 
