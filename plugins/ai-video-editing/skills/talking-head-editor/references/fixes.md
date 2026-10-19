@@ -1,0 +1,27 @@
+# Fixes for the Most Common Problems
+
+Each fix is written as the person would say it. Apply it, verify it, and offer to add the lesson to the Studio Rules.
+
+## 1. Captions drift out of sync
+Re-derive all caption timings from `edit/work/transcript-cut.json`, not from the original source. If the drift grows over time, check whether audio and video in the rough cut have the same length. Re-check sync at the start, middle and end and show three stills with timestamps.
+
+## 2. A word is clipped or doubled at a cut
+Move that cut point into the nearest gap between words and confirm it in the waveform. This is the only timing change allowed under CUT.lock. Update `transcript-cut.json` and re-run the cut check for the whole video.
+
+## 3. A scene shows something the person never said
+Remove it and rebuild the scene using only the words from that sentence. Then scan every scene for content that isn't in the transcript, approved facts or brand folder, and list what you find.
+
+## 4. The face is covered or badly cropped
+Fix the layout using `face-track.json`. Re-render the contact sheet for the whole video and check every frame for the same problem.
+
+## 5. It looks generic, not like the brand
+Re-read `brand.md` and the reference images. List the five biggest differences between the current scenes and the references, propose a fix for each, and wait for an OK before rebuilding.
+
+## 6. The music is too loud or the voice sounds muffled
+Lower the music and strengthen the ducking under speech. Check the voice for over-processing and reduce it if needed. Measure loudness again and update the audio report.
+
+## 7. The animations are too busy
+Reduce motion: fewer elements per scene, slower and simpler entrances, no background movement while the person speaks. Show three before and after stills from the busiest moments.
+
+## 8. The render fails or doesn't match the preview
+Run `npx hyperframes doctor` and `npx hyperframes check`, read the output, and explain the cause in one sentence before fixing it. If HyperFrames' Chrome is missing, run `npx hyperframes browser ensure`. Render a 5-second draft of the problem section first, then the full video.
