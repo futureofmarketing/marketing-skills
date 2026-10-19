@@ -18,21 +18,27 @@ Tell the person which route you're using.
 
 ## 2. Plan the vertical layout
 
-Think in three bands, top to bottom:
+Think in bands, top to bottom. These positions on a 1080x1920 canvas have worked well; adapt them to the brand, keep the margins.
 
-1. **Face band:** the face as large as the source allows, in a rounded frame or full width, eyes roughly a third of the way down the screen. Chrome (name pill, chapter chip) sits in the margin above it.
-2. **Visual band:** the scene's motion graphic, rebuilt for a narrow canvas: fewer columns, larger type, stacked instead of side by side. A check-off grid becomes two columns, a system map becomes a vertical chain, a pipeline wraps into two rows.
-3. **Caption band:** phrase-level captions, large and bold.
+1. **Chrome band (y about 200 to 400):** the name pill, and below it a full-width prompt-bar pill that types the current chapter label (`01 · …`) with a blinking caret and a small send button in the accent colour.
+2. **Visual band (y about 430 to 1170):** one glass panel, 60 px in from both sides, holding the scene's motion graphic rebuilt for a narrow canvas: fewer columns, larger type (headlines around 100 px, labels 22 px or more), stacked instead of side by side. A check-off grid becomes two columns, a system map becomes a vertical chain, a pipeline wraps into two rows, a list of real assets becomes one tall tile plus smaller ones.
+3. **Caption band:** phrase-level captions, one line, about 56 px bold, sitting **between the panel and the face**, never on the face.
+4. **Face band (y about 1140 to 1650):** a rounded face card (about 700 x 500) when the person makes a point, a round bubble (about 370 px) when the panel is the proof and needs more height. Morph between the two at sentence boundaries.
+5. **Progress line (y about 1790):** an optional thin accent line that fills beat by beat.
 
-For hero scenes (opening, close), the face may fill the screen with the headline overlaid on a gradient at the top.
+**Hook (first 3 to 5 seconds):** the face fills the full width from about y 520 down, fading into the background at its top edge. The opening words build above the head in huge uppercase type (about 130 px, one or two words per line, the key word in the accent colour), each on its spoken word. No captions while the big type says the words. Then the face shrinks into its card and the first panel enters.
+
+**Pace:** the Reel keeps the 16:9 version's timing and transcript, but moves inside panels a little calmer (about 0.9 s with a soft settle); a panel's content should change roughly every second, while the panel itself stays for the whole sentence.
+
+For hero scenes (opening, close), the face may fill the screen with the headline over a gradient at the top.
 
 ## 3. Keep clear of the app interface
 
 Social apps lay their own controls over every Reel: profile and caption text at the bottom, action buttons on the right, sometimes a tab bar at the top. On a 1080x1920 frame, keep faces, words and logos:
 
-- below about y 220
-- above about y 1500
-- left of about x 940
+- below about y 200
+- above about y 1500 for captions, words and logos (the eyes and mouth of a face card should stay above about y 1450; its lower edge may run further down)
+- left of about x 940 for anything that sits on the right-hand side
 
 Backgrounds and decorative motion may run to the edges. Check the layout against the bottom quarter of the screen especially: that's where most videos lose their captions.
 
@@ -40,7 +46,7 @@ Logos sit on a plate in a brand colour so they hold on any frame. A logo with a 
 
 ## 4. Render and encode
 
-Run `npx hyperframes check` on the vertical project, then render. The upload file must be:
+Run `npx hyperframes check` on the vertical project and look at a contact sheet (one still per scene, plus the first frame), then render. The upload file must be:
 
 - H.264 High, 1080x1920, 30 fps, `yuv420p`
 - tagged and converted as bt709 in limited (TV) range: `scale=out_color_matrix=bt709:out_range=tv` in the filter chain, plus `-color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709`
